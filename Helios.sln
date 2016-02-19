@@ -3,7 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helios.Model", "Helios.Model\Helios.Model.csproj", "{8613136C-AFED-4EF7-AE8D-110FAF1DA636}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helios.Core.Protocol", "Helios.Core.Protocol\Helios.Core.Protocol.csproj", "{1264F583-8E8C-48C9-8366-FB9E2C155639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helios.Test.ServerForm", "Helios.Test.ServerForm\Helios.Test.ServerForm.csproj", "{9675D339-D3C4-4F6E-B1E7-7B9F68530BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helios.Test.ClientForm", "Helios.Test.ClientForm\Helios.Test.ClientForm.csproj", "{CC166ADC-D7D2-4B32-B84D-206F245200BB}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8613136C-AFED-4EF7-AE8D-110FAF1DA636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8613136C-AFED-4EF7-AE8D-110FAF1DA636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8613136C-AFED-4EF7-AE8D-110FAF1DA636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8613136C-AFED-4EF7-AE8D-110FAF1DA636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1264F583-8E8C-48C9-8366-FB9E2C155639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1264F583-8E8C-48C9-8366-FB9E2C155639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1264F583-8E8C-48C9-8366-FB9E2C155639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1264F583-8E8C-48C9-8366-FB9E2C155639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9675D339-D3C4-4F6E-B1E7-7B9F68530BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9675D339-D3C4-4F6E-B1E7-7B9F68530BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9675D339-D3C4-4F6E-B1E7-7B9F68530BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9675D339-D3C4-4F6E-B1E7-7B9F68530BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC166ADC-D7D2-4B32-B84D-206F245200BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC166ADC-D7D2-4B32-B84D-206F245200BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC166ADC-D7D2-4B32-B84D-206F245200BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC166ADC-D7D2-4B32-B84D-206F245200BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
