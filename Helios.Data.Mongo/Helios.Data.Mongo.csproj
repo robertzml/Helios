@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BsonRepository.cs" />
     <Compile Include="CollectionName.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="IEntity.cs" />
@@ -70,6 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helios.Model\Helios.Model.csproj">
+      <Project>{8613136c-afed-4ef7-ae8d-110faf1da636}</Project>
+      <Name>Helios.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
