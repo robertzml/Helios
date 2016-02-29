@@ -30,6 +30,8 @@
         {
             this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.buttonSend = new System.Windows.Forms.Button();
+            this.buttonParse = new System.Windows.Forms.Button();
+            this.textBoxMessageOutput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxMessage
@@ -50,11 +52,31 @@
             this.buttonSend.UseVisualStyleBackColor = true;
             this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
+            // buttonParse
+            // 
+            this.buttonParse.Location = new System.Drawing.Point(56, 261);
+            this.buttonParse.Name = "buttonParse";
+            this.buttonParse.Size = new System.Drawing.Size(87, 31);
+            this.buttonParse.TabIndex = 4;
+            this.buttonParse.Text = "报文解析";
+            this.buttonParse.UseVisualStyleBackColor = true;
+            this.buttonParse.Click += new System.EventHandler(this.buttonParse_Click);
+            // 
+            // textBoxMessageOutput
+            // 
+            this.textBoxMessageOutput.Location = new System.Drawing.Point(56, 308);
+            this.textBoxMessageOutput.Multiline = true;
+            this.textBoxMessageOutput.Name = "textBoxMessageOutput";
+            this.textBoxMessageOutput.Size = new System.Drawing.Size(328, 131);
+            this.textBoxMessageOutput.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 289);
+            this.ClientSize = new System.Drawing.Size(793, 476);
+            this.Controls.Add(this.textBoxMessageOutput);
+            this.Controls.Add(this.buttonParse);
             this.Controls.Add(this.textBoxMessage);
             this.Controls.Add(this.buttonSend);
             this.Name = "MainForm";
@@ -69,6 +91,8 @@
 
         private System.Windows.Forms.TextBox textBoxMessage;
         private System.Windows.Forms.Button buttonSend;
+        private System.Windows.Forms.Button buttonParse;
+        private System.Windows.Forms.TextBox textBoxMessageOutput;
     }
 }
 

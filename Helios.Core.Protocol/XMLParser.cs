@@ -61,19 +61,22 @@ namespace Helios.Core.Protocol
         /// <returns></returns>
         public MessageCommonSection GetCommon()
         {
-            var dt = GetData("root/common");
-
-            if (dt.Rows.Count == 0)
-                return null;
+            var node = this.doc.SelectSingleNode("root/common");
 
             MessageCommonSection data = new MessageCommonSection();
-            data.GatewayId = dt.Rows[0]["gateway_id"].ToString();
-            string type = dt.Rows[0]["type"].ToString();
+            data.GatewayId = node.SelectSingleNode("gateway_id").InnerText;
+            string type = node.SelectSingleNode("type").InnerText;
 
             switch (type)
             {
                 case "heart_beat":
                     data.Type = MessageType.HeartBeat;
+                    break;
+                case "report":
+                    data.Type = MessageType.Report;
+                    break;
+                default:
+                    data.Type = MessageType.Unknown;
                     break;
             }
 
@@ -98,6 +101,39 @@ namespace Helios.Core.Protocol
             {
                 long mid = Convert.ToInt64(item.Attributes["id"].Value);
                 message.Meters.Add(mid);
+            }
+
+            return message;
+        }
+
+        /// <summary>
+        /// 解析上报数据
+        /// </summary>
+        /// <param name="gatewayId">网关ID</param>
+        /// <returns></returns>
+        public ReportMessage ParseReport(string gatewayId)
+        {
+            var node = this.doc.SelectSingleNode("root/data");
+
+            ReportMessage message = new ReportMessage();
+            message.GatewayId = gatewayId;
+            message.Sequence = node.SelectSingleNode("sequence").InnerText;
+            message.Time = DateTime.ParseExact(node.SelectSingleNode("time").InnerText, "yyyyMMddHHmmss", null);
+            message.Meters = new List<MeterParameter>();
+
+            var meters = node.SelectNodes("meter");
+            foreach (XmlNode item in meters)
+            {
+                MeterParameter m = new MeterParameter();
+                m.Id = Convert.ToInt32(item.Attributes["id"].Value);
+                m.Tags = new Dictionary<string, double>();
+                var tags = item.SelectNodes("tag");
+                foreach (XmlNode tag in tags)
+                {
+                    m.Tags.Add(tag.Attributes["id"].Value, Convert.ToDouble(tag.InnerText));
+                }
+
+                message.Meters.Add(m);
             }
 
             return message;

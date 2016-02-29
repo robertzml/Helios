@@ -33,7 +33,7 @@ namespace Helios.Core.Protocol
         /// </summary>
         private int listenPort = 11000;
 
-        private GatewayProtocol protocol = new GatewayProtocol();
+        private XmlProtocol protocol = new XmlProtocol();
 
         private ProcessInvokeSimple invokeSimple;
 
@@ -99,8 +99,9 @@ namespace Helios.Core.Protocol
                     string message = Encoding.ASCII.GetString(bytes, 0, bytes.Length);
                     invokeSimple(message);
 
-                    this.protocol.ParseMessage(message);
-                    var formatMessage = this.protocol.ReadHeartBeat();
+                    //this.protocol.ParseMessage(message);
+                    var common = this.protocol.ReadCommon(message);
+                    var formatMessage = this.protocol.ReadBody(common, message);
 
                     invoke(formatMessage);
                 }

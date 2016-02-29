@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Helios.Model;
+using Helios.Core.Protocol;
 
 namespace Helios.Test.ClientForm
 {
@@ -67,6 +68,32 @@ namespace Helios.Test.ClientForm
                 data = reader.ReadToEnd();
             }
             Send(data);
+        }
+        
+
+        private void buttonParse_Click(object sender, EventArgs e)
+        {
+            string data;
+            using (var reader = new StreamReader("shangbao.xml"))
+            {
+                data = reader.ReadToEnd();
+            }
+
+            XmlProtocol protocol = new XmlProtocol();
+            var common = protocol.ReadCommon(data);
+            ReportMessage message = (ReportMessage)protocol.ReadBody(common, data);
+
+            this.textBoxMessageOutput.AppendText(string.Format("gateway id: {0}, sequence: {1}, \r\n time: {2}\r\n", 
+                message.GatewayId, message.Sequence, message.Time));
+
+            foreach(var meter in message.Meters)
+            {
+                this.textBoxMessageOutput.AppendText(string.Format("meter id: {0}", meter.Id));
+                foreach(var tag in meter.Tags)
+                {
+                    this.textBoxMessageOutput.AppendText(string.Format("{0}: {1} \t", tag.Key, tag.Value));
+                }
+            }
         }
         #endregion //Event
     }

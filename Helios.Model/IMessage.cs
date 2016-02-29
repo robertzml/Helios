@@ -13,5 +13,7 @@ namespace Helios.Model
         /// </summary>
         /// <returns></returns>
         MessageType GetMessageType();
+
+        string GatewayId { get; set; }
     }
 }

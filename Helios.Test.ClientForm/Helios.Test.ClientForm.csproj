@@ -80,6 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Helios.Core.Protocol\Helios.Core.Protocol.csproj">
+      <Project>{1264f583-8e8c-48c9-8366-fb9e2c155639}</Project>
+      <Name>Helios.Core.Protocol</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helios.Model\Helios.Model.csproj">
       <Project>{8613136c-afed-4ef7-ae8d-110faf1da636}</Project>
       <Name>Helios.Model</Name>
