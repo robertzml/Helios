@@ -28,7 +28,7 @@ namespace Helios.Business
                 var filter = Builders<BsonDocument>.Filter.Eq("meterId", meter);
                 var update = Builders<BsonDocument>.Update.Set("gatewayId", data.GatewayId).Set("time", data.BeatTime);
 
-                repository.Update("heartBeat", filter, update, true);
+                repository.Update(HeliosCollection.HeartBeat, filter, update, true);
             }
         }
     }

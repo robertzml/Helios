@@ -95,6 +95,9 @@ namespace Helios.Test.ClientForm
                     this.textBoxMessageOutput.AppendText(string.Format("{0}: {1} \t", tag.Key, tag.Value));
                 }
             }
+
+            EnergyBusiness business = new EnergyBusiness();
+            business.AddEnergy(message);
         }
         
 

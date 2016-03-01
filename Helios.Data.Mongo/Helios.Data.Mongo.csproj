@@ -61,6 +61,7 @@
     <Compile Include="BsonRepository.cs" />
     <Compile Include="CollectionName.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="HeliosCollection.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IRepositoryManager.cs" />
