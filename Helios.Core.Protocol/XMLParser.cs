@@ -94,7 +94,7 @@ namespace Helios.Core.Protocol
 
             HeartBeatMessage message = new HeartBeatMessage();
             message.GatewayId = gatewayId;
-            message.BeatTime = node.Attributes["time"].Value;
+            message.BeatTime = DateTime.ParseExact(node.Attributes["time"].Value, "yyyyMMddHHmmss", null);
             message.Meters = new List<long>();
 
             foreach (XmlNode item in node.ChildNodes)

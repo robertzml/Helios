@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Helios.Business;
 using Helios.Model;
 using Helios.Core.Protocol;
 
@@ -94,6 +95,24 @@ namespace Helios.Test.ClientForm
                     this.textBoxMessageOutput.AppendText(string.Format("{0}: {1} \t", tag.Key, tag.Value));
                 }
             }
+        }
+        
+
+        private void buttonHeartBeat_Click(object sender, EventArgs e)
+        {
+            string data;
+            using (var reader = new StreamReader("xintiao.xml"))
+            {
+                data = reader.ReadToEnd();
+            }
+
+            XmlProtocol protocol = new XmlProtocol();
+            var common = protocol.ReadCommon(data);
+            HeartBeatMessage message = (HeartBeatMessage)protocol.ReadBody(common, data);
+
+            HeartBeatBusiness business = new HeartBeatBusiness();
+            business.UpdateHeartBeat(message);
+
         }
         #endregion //Event
     }

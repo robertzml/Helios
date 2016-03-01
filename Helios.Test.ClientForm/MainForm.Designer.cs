@@ -32,6 +32,7 @@
             this.buttonSend = new System.Windows.Forms.Button();
             this.buttonParse = new System.Windows.Forms.Button();
             this.textBoxMessageOutput = new System.Windows.Forms.TextBox();
+            this.buttonHeartBeat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxMessage
@@ -70,11 +71,22 @@
             this.textBoxMessageOutput.Size = new System.Drawing.Size(328, 131);
             this.textBoxMessageOutput.TabIndex = 5;
             // 
+            // buttonHeartBeat
+            // 
+            this.buttonHeartBeat.Location = new System.Drawing.Point(201, 261);
+            this.buttonHeartBeat.Name = "buttonHeartBeat";
+            this.buttonHeartBeat.Size = new System.Drawing.Size(87, 31);
+            this.buttonHeartBeat.TabIndex = 6;
+            this.buttonHeartBeat.Text = "心跳解析";
+            this.buttonHeartBeat.UseVisualStyleBackColor = true;
+            this.buttonHeartBeat.Click += new System.EventHandler(this.buttonHeartBeat_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 476);
+            this.Controls.Add(this.buttonHeartBeat);
             this.Controls.Add(this.textBoxMessageOutput);
             this.Controls.Add(this.buttonParse);
             this.Controls.Add(this.textBoxMessage);
@@ -93,6 +105,7 @@
         private System.Windows.Forms.Button buttonSend;
         private System.Windows.Forms.Button buttonParse;
         private System.Windows.Forms.TextBox textBoxMessageOutput;
+        private System.Windows.Forms.Button buttonHeartBeat;
     }
 }
 

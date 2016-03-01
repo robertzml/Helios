@@ -27,7 +27,7 @@ namespace Helios.Model
         /// <summary>
         /// 心跳时间
         /// </summary>
-        public string BeatTime { get; set; }
+        public DateTime BeatTime { get; set; }
 
         /// <summary>
         /// 表具ID

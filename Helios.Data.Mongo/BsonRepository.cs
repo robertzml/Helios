@@ -32,11 +32,14 @@ namespace Helios.Data.Mongo
             collection.InsertOne(doc);
         }
 
-        public void Update(string collectionName, BsonDocument filter, BsonDocument set, bool upsert)
+        public long Update(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update, bool upsert)
         {
             var collection = this.database.GetCollection<BsonDocument>(collectionName);
+            var options = new UpdateOptions { IsUpsert = upsert };
 
-            collection.UpdateOne(filter, set, new UpdateOptions { IsUpsert = upsert });
+            var result = collection.UpdateOne(filter, update, options);
+
+            return result.ModifiedCount;
         }
         #endregion //Method
     }
