@@ -25,9 +25,9 @@ namespace Helios.Model
         HeartBeat = 1,
 
         /// <summary>
-        /// 定时上报能耗数据报文
+        /// 上报能耗数据报文
         /// </summary>
-        [Display(Name = "定时上报", ShortName = "report")]
+        [Display(Name = "上报数据", ShortName = "report")]
         Report = 2,
 
         /// <summary>

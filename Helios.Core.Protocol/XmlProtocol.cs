@@ -7,16 +7,17 @@ using Helios.Model;
 
 namespace Helios.Core.Protocol
 {
+#if XmlProtocl
     /// <summary>
     /// XML网关通讯协议
     /// </summary>
     public class XmlProtocol
     {
-        #region Function
+#region Function
        
-        #endregion //Function
+#endregion //Function
 
-        #region Constructor
+#region Constructor
         /// <summary>
         /// XML网关通讯协议
         /// </summary>
@@ -25,9 +26,9 @@ namespace Helios.Core.Protocol
         {
          
         }
-        #endregion //Constructor
+#endregion //Constructor
 
-        #region Method
+#region Method
         /// <summary>
         /// 读取Common节
         /// </summary>
@@ -53,24 +54,7 @@ namespace Helios.Core.Protocol
 
             return null;
         }
-
-        /// <summary>
-        /// 读取心跳报文
-        /// </summary>
-        /// <returns></returns>
-        //public HeartBeatMessage ReadHeartBeat()
-        //{
-        //    return this.parser.ParseHeartBeat(common.GatewayId);
-        //}
-
-        ///// <summary>
-        ///// 读取上报数据
-        ///// </summary>
-        ///// <returns></returns>
-        //public ReportMessage ReadReport()
-        //{
-        //    return this.parser.ParseReport(common.GatewayId);
-        //}
-        #endregion //Method
+#endregion //Method
     }
+#endif
 }

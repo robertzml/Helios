@@ -33,6 +33,7 @@
             this.buttonParse = new System.Windows.Forms.Button();
             this.textBoxMessageOutput = new System.Windows.Forms.TextBox();
             this.buttonHeartBeat = new System.Windows.Forms.Button();
+            this.buttonReport2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxMessage
@@ -81,11 +82,22 @@
             this.buttonHeartBeat.UseVisualStyleBackColor = true;
             this.buttonHeartBeat.Click += new System.EventHandler(this.buttonHeartBeat_Click);
             // 
+            // buttonReport2
+            // 
+            this.buttonReport2.Location = new System.Drawing.Point(349, 261);
+            this.buttonReport2.Name = "buttonReport2";
+            this.buttonReport2.Size = new System.Drawing.Size(84, 31);
+            this.buttonReport2.TabIndex = 7;
+            this.buttonReport2.Text = "上报解析2";
+            this.buttonReport2.UseVisualStyleBackColor = true;
+            this.buttonReport2.Click += new System.EventHandler(this.buttonReport2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 476);
+            this.Controls.Add(this.buttonReport2);
             this.Controls.Add(this.buttonHeartBeat);
             this.Controls.Add(this.textBoxMessageOutput);
             this.Controls.Add(this.buttonParse);
@@ -106,6 +118,7 @@
         private System.Windows.Forms.Button buttonParse;
         private System.Windows.Forms.TextBox textBoxMessageOutput;
         private System.Windows.Forms.Button buttonHeartBeat;
+        private System.Windows.Forms.Button buttonReport2;
     }
 }
 

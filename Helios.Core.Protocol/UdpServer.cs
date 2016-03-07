@@ -33,7 +33,7 @@ namespace Helios.Core.Protocol
         /// </summary>
         private int listenPort = 11000;
 
-        private XmlProtocol protocol = new XmlProtocol();
+        //private XmlProtocol protocol = new XmlProtocol();
 
         private ProcessInvokeSimple invokeSimple;
 
@@ -100,10 +100,10 @@ namespace Helios.Core.Protocol
                     invokeSimple(message);
 
                     //this.protocol.ParseMessage(message);
-                    var common = this.protocol.ReadCommon(message);
-                    var formatMessage = this.protocol.ReadBody(common, message);
+                    //var common = this.protocol.ReadCommon(message);
+                    //var formatMessage = this.protocol.ReadBody(common, message);
 
-                    invoke(formatMessage);
+                    //invoke(formatMessage);
                 }
             }
             catch (Exception e)

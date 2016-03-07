@@ -74,48 +74,64 @@ namespace Helios.Test.ClientForm
 
         private void buttonParse_Click(object sender, EventArgs e)
         {
-            string data;
-            using (var reader = new StreamReader("shangbao.xml"))
-            {
-                data = reader.ReadToEnd();
-            }
+            //string data;
+            //using (var reader = new StreamReader("shangbao.xml"))
+            //{
+            //    data = reader.ReadToEnd();
+            //}
 
-            XmlProtocol protocol = new XmlProtocol();
-            var common = protocol.ReadCommon(data);
-            ReportMessage message = (ReportMessage)protocol.ReadBody(common, data);
+            //XmlProtocol protocol = new XmlProtocol();
+            //var common = protocol.ReadCommon(data);
+            //ReportMessage message = (ReportMessage)protocol.ReadBody(common, data);
 
-            this.textBoxMessageOutput.AppendText(string.Format("gateway id: {0}, sequence: {1}, \r\n time: {2}\r\n", 
-                message.GatewayId, message.Sequence, message.Time));
+            //this.textBoxMessageOutput.AppendText(string.Format("gateway id: {0}, sequence: {1}, \r\n time: {2}\r\n", 
+            //    message.GatewayId, message.Sequence, message.Time));
 
-            foreach(var meter in message.Meters)
-            {
-                this.textBoxMessageOutput.AppendText(string.Format("meter id: {0}", meter.Id));
-                foreach(var tag in meter.Tags)
-                {
-                    this.textBoxMessageOutput.AppendText(string.Format("{0}: {1} \t", tag.Key, tag.Value));
-                }
-            }
+            //foreach(var meter in message.Meters)
+            //{
+            //    this.textBoxMessageOutput.AppendText(string.Format("meter id: {0}", meter.Id));
+            //    foreach(var tag in meter.Tags)
+            //    {
+            //        this.textBoxMessageOutput.AppendText(string.Format("{0}: {1} \t", tag.Key, tag.Value));
+            //    }
+            //}
 
-            EnergyBusiness business = new EnergyBusiness();
-            business.AddEnergy(message);
+            //EnergyBusiness business = new EnergyBusiness();
+            //business.AddEnergy(message);
         }
         
 
         private void buttonHeartBeat_Click(object sender, EventArgs e)
         {
+            //string data;
+            //using (var reader = new StreamReader("xintiao.xml"))
+            //{
+            //    data = reader.ReadToEnd();
+            //}
+
+            //XmlProtocol protocol = new XmlProtocol();
+            //var common = protocol.ReadCommon(data);
+            //HeartBeatMessage message = (HeartBeatMessage)protocol.ReadBody(common, data);
+
+            //HeartBeatBusiness business = new HeartBeatBusiness();
+            //business.UpdateHeartBeat(message);
+
+        }
+       
+
+        private void buttonReport2_Click(object sender, EventArgs e)
+        {
             string data;
-            using (var reader = new StreamReader("xintiao.xml"))
+            using (var reader = new StreamReader("shangbao2.txt"))
             {
                 data = reader.ReadToEnd();
             }
 
-            XmlProtocol protocol = new XmlProtocol();
-            var common = protocol.ReadCommon(data);
-            HeartBeatMessage message = (HeartBeatMessage)protocol.ReadBody(common, data);
+            JsonProtocol protocol = new JsonProtocol();
+            var message = protocol.GetReport(data);
 
-            HeartBeatBusiness business = new HeartBeatBusiness();
-            business.UpdateHeartBeat(message);
-
+            this.textBoxMessageOutput.AppendText(string.Format("gateway id: {0}, time: {2}\r\n",
+                message.GatewayId, message.Time));
         }
         #endregion //Event
     }

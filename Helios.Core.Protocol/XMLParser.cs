@@ -10,6 +10,7 @@ using Helios.Model;
 
 namespace Helios.Core.Protocol
 {
+#if XmlProtocl
     /// <summary>
     /// XML 解析类
     /// </summary>
@@ -140,4 +141,5 @@ namespace Helios.Core.Protocol
         }
         #endregion //Method
     }
+#endif
 }

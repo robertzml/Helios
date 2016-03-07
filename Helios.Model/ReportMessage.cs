@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Helios.Model
 {
@@ -22,16 +23,22 @@ namespace Helios.Model
         /// <summary>
         /// 网关ID
         /// </summary>
+        [JsonProperty("gateway", Required = Required.Always)]
         public string GatewayId { get; set; }
+
+        [JsonProperty("type", Required = Required.Always)]
+        public string Type { get; set; }
 
         /// <summary>
         /// 数据序号
         /// </summary>
+        [JsonProperty("sequence", Required = Required.AllowNull)]
         public string Sequence { get; set; }
 
         /// <summary>
         /// 数据采集时间
         /// </summary>
+        [JsonProperty("time", Required = Required.AllowNull)]
         public DateTime Time { get; set; }
 
         /// <summary>
