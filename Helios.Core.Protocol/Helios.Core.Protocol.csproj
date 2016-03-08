@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonProtocol.cs" />
+    <Compile Include="TcpServer.cs" />
     <Compile Include="XmlProtocol.cs" />
     <Compile Include="UdpServer.cs" />
     <Compile Include="XmlParser.cs" />

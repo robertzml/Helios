@@ -18,6 +18,20 @@ namespace Helios.Test.ClientForm
 {
     public partial class MainForm : Form
     {
+        #region Field
+        /// <summary>
+        /// 测试心跳数据
+        /// </summary>
+        private byte[] heartBeatData = new byte[] {
+            0xA5, 0xA5, 0xA5, 0xA5, 0x00, 0x51, 0x7B, 0x22, 0x64, 0x61, 0x74, 0x61, 0x22, 0x3A, 0x7B, 0x22,
+            0x74, 0x69, 0x6D, 0x65, 0x22, 0x3A, 0x22, 0x32, 0x30, 0x31, 0x36, 0x30, 0x33, 0x30, 0x33, 0x31,
+            0x30, 0x30, 0x30, 0x32, 0x38, 0x22, 0x7D, 0x2C, 0x22, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79,
+            0x22, 0x3A, 0x22, 0x31, 0x35, 0x30, 0x31, 0x31, 0x30, 0x30, 0x30, 0x30, 0x31, 0x22, 0x2C, 0x22,
+            0x74, 0x79, 0x70, 0x65, 0x22, 0x3A, 0x22, 0x68, 0x65, 0x61, 0x72, 0x74, 0x5F, 0x62, 0x65, 0x61,
+            0x74, 0x5F, 0x61, 0x63, 0x6B, 0x22, 0x7D, 0x0A, 0x2E
+        };
+        #endregion //Field
+
         #region Constructor
         public MainForm()
         {
@@ -40,6 +54,61 @@ namespace Helios.Test.ClientForm
             Console.WriteLine("Message sent to the broadcast address");
         }
 
+        /// <summary>
+        /// 连接tcp
+        /// </summary>
+        /// <param name="message"></param>
+        private void Send2(string message)
+        {
+            try
+            {
+                // Create a TcpClient.
+                int port = 11000;
+                IPAddress ipAddress = IPAddress.Parse("210.28.24.247");
+                //IPEndPoint ipLocalEndPoint = new IPEndPoint(ipAddress, port);
+
+                TcpClient client = new TcpClient();
+                client.Connect(ipAddress, port);
+
+                // Translate the passed message into ASCII and store it as a Byte array.
+                // byte[] data = Encoding.ASCII.GetBytes(message);
+
+                // Get a client stream for reading and writing.
+                // Stream stream = client.GetStream();
+                NetworkStream stream = client.GetStream();
+
+                // Send the message to the connected TcpServer. 
+                stream.Write(this.heartBeatData, 0, this.heartBeatData.Length);
+
+                this.textBoxMessage.AppendText("Message Sent.\r\n");
+
+                // Receive the TcpServer.response.
+
+                // Buffer to store the response bytes.
+                byte[] receiveData = new byte[2000];
+
+                // String to store the response ASCII representation.
+                string responseData = string.Empty;
+
+                // Read the first batch of the TcpServer response bytes.
+                int bytes = stream.Read(receiveData, 0, receiveData.Length);
+                responseData = System.Text.Encoding.ASCII.GetString(receiveData, 0, bytes);
+                this.textBoxMessage.AppendText(string.Format("Received: {0}\r\n", responseData));
+
+                // Close everything.
+                stream.Close();
+                client.Close();
+            }
+            catch (ArgumentNullException e)
+            {
+                this.textBoxMessage.AppendText(string.Format("ArgumentNullException: {0}", e));
+            }
+            catch (SocketException e)
+            {
+                this.textBoxMessage.AppendText(string.Format("SocketException: {0}", e));
+            }
+        }
+
         private void ShowFormatMessage(IMessage message)
         {
             HeartBeatMessage hb = (HeartBeatMessage)message;
@@ -59,16 +128,18 @@ namespace Helios.Test.ClientForm
         {
 
         }
-       
+
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
-            string data;
-            using (var reader = new StreamReader("xintiao.xml"))
-            {
-                data = reader.ReadToEnd();
-            }
-            Send(data);
+            //string data;
+            //using (var reader = new StreamReader("xintiao.xml"))
+            //{
+            //    data = reader.ReadToEnd();
+            //}
+            //Send(data);
+
+            Send2("");
         }
         
 

@@ -57,6 +57,7 @@ namespace Helios.Core.Protocol
             this.ip = ip;
             this.listenPort = port;
         }
+        #endregion //Constructor
 
         #region Method
         /// <summary>
@@ -116,6 +117,5 @@ namespace Helios.Core.Protocol
             }
         }
         #endregion //Method
-        #endregion //Constructor
     }
 }

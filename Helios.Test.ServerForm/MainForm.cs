@@ -16,7 +16,9 @@ namespace Helios.Test.ServerForm
     public partial class MainForm : Form
     {
         #region Field
-        private UdpServer server;
+        //private UdpServer server;
+
+        private TcpServer server;
         #endregion //Field
 
         #region Constructor
@@ -49,9 +51,10 @@ namespace Helios.Test.ServerForm
         #region Event
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.server = new UdpServer();
-            this.server.SetInvokeSimple(ShowMessage);
-            this.server.SetInvoke(ShowFormatMessage);
+            this.server = new TcpServer();
+            this.server.SetServerMessage(ShowMessage);
+            //this.server.SetInvokeSimple(ShowMessage);
+            //this.server.SetInvoke(ShowFormatMessage);
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
