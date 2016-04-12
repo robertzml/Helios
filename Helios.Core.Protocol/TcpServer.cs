@@ -73,8 +73,7 @@ namespace Helios.Core.Protocol
             try
             {
                 IPAddress ipAddress = IPAddress.Parse(this.ip);
-
-                // TcpListener server = new TcpListener(port);
+            
                 this.server = new TcpListener(ipAddress, port);
 
                 // Start listening for client requests.
@@ -109,7 +108,7 @@ namespace Helios.Core.Protocol
 
                         //data = Encoding.ASCII.GetString(bytes, 0, i);
                         //invokeServerMessage(string.Format("Received: {0}", data));
-                        protocol.ParseMessage(bytes);
+                        protocol.ParseMessage(bytes, i);
 
                         // Process the data sent by the client.                       
                         string sendData = "hello, world";

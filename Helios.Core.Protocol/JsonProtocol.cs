@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Helios.Common;
 using Helios.Model;
 using Newtonsoft.Json;
 
@@ -14,7 +15,7 @@ namespace Helios.Core.Protocol
     public class JsonProtocol
     {
         #region Method
-        public bool ParseMessage(byte[] message)
+        public bool ParseMessage(byte[] message, int length)
         {
             var head = message.Take(4);
             if (head.Any(r => r != 0xA5))
@@ -23,9 +24,14 @@ namespace Helios.Core.Protocol
             byte[] bcount = message.Skip(4).Take(2).ToArray();
             int count = (bcount[0] << 8) + bcount[1];
 
+            if (8 + count != length)
+                return false;
+
             string json = Encoding.ASCII.GetString(message, 6, count);
 
-            byte[] crc = message.Skip(6 + count).ToArray();
+            byte[] crc = message.Skip(6 + count).Take(2).ToArray();
+
+            byte[] crc2 = Crc16.GetCRC16(message.Take(count + 6).ToArray(), count + 6);
 
             return true;
         }
